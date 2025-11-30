@@ -1,0 +1,272 @@
+/* style.css */
+/* 
+  Minimalist, modern, and responsive UI
+  - Max width: 500px, centered
+  - Flexbox for alignment
+  - Accent color: #007BFF
+  - Hover/active transitions
+  - Optional dark mode
+*/
+
+:root {
+  --bg: #f7f9fc;
+  --card: #ffffff;
+  --text: #1a1f36;
+  --muted: #6b7280;
+  --accent: #007BFF;
+  --accent-600: #0a66d9;
+  --success: #16a34a;
+  --danger: #ef4444;
+  --border: #e5e7eb;
+  --shadow: 0 6px 24px rgba(0,0,0,0.06);
+}
+
+[data-theme="dark"] {
+  --bg: #0b1220;
+  --card: #0f172a;
+  --text: #e5e7eb;
+  --muted: #9aa3b2;
+  --accent: #60a5fa;
+  --accent-600: #3b82f6;
+  --success: #22c55e;
+  --danger: #f87171;
+  --border: #1f2937;
+  --shadow: 0 8px 30px rgba(0,0,0,0.45);
+}
+
+/* Page reset and base */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* App card */
+.app {
+  max-width: 500px;
+  margin: 6vh auto 8vh;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: clamp(16px, 2.5vw, 24px);
+}
+
+/* Header */
+.app__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.app__title {
+  margin: 0;
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  letter-spacing: 0.2px;
+}
+
+/* Screen-reader only helper */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0);
+  border: 0;
+}
+
+/* Add form */
+.add {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.input {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+/* Buttons */
+.btn {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  transition: transform 120ms ease, background 160ms ease, border-color 160ms ease, opacity 160ms ease;
+  user-select: none;
+}
+
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); opacity: 0.9; }
+
+.btn--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.btn--primary:hover { background: var(--accent-600); border-color: var(--accent-600); }
+
+.btn--ghost {
+  background: transparent;
+  border-color: var(--border);
+}
+
+/* Helper line */
+.helper {
+  min-height: 18px;
+  margin-top: 6px;
+  color: var(--danger);
+  font-size: 0.9rem;
+}
+
+/* Empty state */
+.empty {
+  text-align: center;
+  color: var(--muted);
+  margin: 18px 0 6px;
+}
+
+/* List */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* List item (task card) */
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--card) 90%, var(--bg));
+  border-radius: 12px;
+  padding: 12px;
+  transition: background 160ms ease, border-color 160ms ease, opacity 160ms ease;
+}
+
+.item__left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.item__text {
+  margin: 0;
+  word-break: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.badge {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.btn--success {
+  background: color-mix(in srgb, var(--success) 15%, var(--card));
+  border-color: color-mix(in srgb, var(--success) 30%, var(--border));
+  color: var(--success);
+}
+.btn--success:hover {
+  background: color-mix(in srgb, var(--success) 25%, var(--card));
+}
+
+.btn--danger {
+  background: color-mix(in srgb, var(--danger) 12%, var(--card));
+  border-color: color-mix(in srgb, var(--danger) 30%, var(--border));
+  color: var(--danger);
+}
+.btn--danger:hover {
+  background: color-mix(in srgb, var(--danger) 20%, var(--card));
+}
+
+/* Completed task styles */
+.item--completed .item__text {
+  text-decoration: line-through;
+  color: color-mix(in srgb, var(--success) 40%, var(--text));
+}
+.item--completed {
+  border-color: color-mix(in srgb, var(--success) 40%, var(--border));
+  background: color-mix(in srgb, var(--success) 12%, var(--card));
+}
+
+/* Filter chips */
+.filters {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+.chip {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease, transform 120ms ease;
+}
+
+.chip:hover { transform: translateY(-1px); }
+.chip.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* Tiny 'shake' animation for invalid input */
+@keyframes shake {
+  10%, 90% { transform: translateX(-1px); }
+  20%, 80% { transform: translateX(2px); }
+  30%, 50%, 70% { transform: translateX(-4px); }
+  40%, 60% { transform: translateX(4px); }
+}
+.input.is-invalid {
+  border-color: var(--danger);
+  animation: shake 320ms ease;
+}
+
+/* Responsive: stack input and button on mobile */
+@media (max-width: 540px) {
+  .add {
+    flex-direction: column;
+  }
+  .btn {
+    width: 100%;
+  }
+}

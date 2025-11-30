@@ -1,0 +1,62 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--
+      Simple and modern To-Do List app
+      - HTML, CSS, JavaScript (Vanilla)
+      - Works directly on GitHub Pages
+      - Responsive + accessibility focused
+    -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My To-Do List</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- App Container -->
+    <main class="app">
+      <!-- Header with title and optional theme toggle -->
+      <header class="app__header">
+        <h1 class="app__title">My To-Do List</h1>
+
+        <!-- Dark Mode Toggle (optional) -->
+        <button id="themeToggle" class="btn btn--ghost" aria-label="Toggle dark mode" title="Toggle dark mode">
+          🌙
+        </button>
+      </header>
+
+      <!-- Input section: add new task -->
+      <section class="add">
+        <label for="taskInput" class="sr-only">Add a new task</label>
+        <input
+          id="taskInput"
+          class="input"
+          type="text"
+          placeholder="Add a new task…"
+          autocomplete="off"
+          maxlength="120"
+        />
+        <button id="addBtn" class="btn btn--primary" aria-label="Add task" title="Add task">Add Task</button>
+      </section>
+
+      <!-- Empty state message -->
+      <p id="emptyState" class="empty">No tasks yet</p>
+
+      <!-- Task list -->
+      <ul id="taskList" class="list" aria-live="polite"></ul>
+
+      <!-- Filter buttons -->
+      <nav class="filters" aria-label="Filters">
+        <button class="chip is-active" data-filter="all" aria-pressed="true">All</button>
+        <button class="chip" data-filter="active" aria-pressed="false">Active</button>
+        <button class="chip" data-filter="completed" aria-pressed="false">Completed</button>
+      </nav>
+
+      <!-- Helper line (e.g., empty input hint) -->
+      <div id="helper" class="helper" role="status" aria-live="polite"></div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
